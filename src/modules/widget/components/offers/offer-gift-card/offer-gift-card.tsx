@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Classnames from 'classnames';
 import { GiftCard, BonusTag } from '../../../../../components/common/';
 import { PrizeoutOffer } from '../../../../../slices/offers-slice';
