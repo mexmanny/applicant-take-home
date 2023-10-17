@@ -5,13 +5,16 @@ import { CheckoutPanel } from '../../../../components/checkout-panel/checkout-pa
 import DisplayOffers from '../offers/display-offers';
 import { useAppSelector } from '../../../../hooks';
 import { selectIsCheckoutPanelCollapsed } from '../../../../slices/common-slice';
+import { selectChosenGiftCard } from '../../../../slices/checkout-slice';
 
 import './dashboard.less';
 
 const Dashboard: React.FC = (): React.ReactElement => {
     const isCheckoutPanelCollapsedView = useAppSelector(selectIsCheckoutPanelCollapsed);
+    const selectedGiftCard = useAppSelector(selectChosenGiftCard);
     const classes = Classnames('dashboard__wrapper', {
         'dashboard__wrapper--checkout-panel-collapsed-view': isCheckoutPanelCollapsedView,
+        'dashboard__wrapper--no-card-selected': !selectedGiftCard.giftcard_list.length,
     });
 
     return (
@@ -25,7 +28,7 @@ const Dashboard: React.FC = (): React.ReactElement => {
                         </div>
                         <Footer />
                     </section>
-                    <CheckoutPanel />
+                    {selectedGiftCard.giftcard_list.length > 0 && <CheckoutPanel />}
                 </div>
             </div>
         </>

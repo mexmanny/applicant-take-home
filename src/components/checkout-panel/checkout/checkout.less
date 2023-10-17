@@ -1,11 +1,33 @@
-@import "../../../utils/styles/utility.less";
+@import '../../../utils/styles/utility.less';
 
 .checkout {
-	padding: var(--space-inner);
-	
-	&__brand {
-		overflow: auto;
-	}
+    padding: var(--space-inner);
+
+    &__brand {
+        overflow: auto;
+    }
+
+    p {
+        font-size: var(--font-size-m);
+        margin: 10px 0px;
+    }
+
+    &__gift-card-cost-options {
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+        grid-gap: 5px;
+        max-width: 100%;
+
+        .gift-card-cost-option {
+            font-size: 10px;
+            padding: 9px;
+            margin: 3px 0px;
+            cursor: pointer;
+
+            &.active {
+                background-color: var(--color-primary);
+                color: var(--color-white);
+            }
+        }
+    }
 }
-
-

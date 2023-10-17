@@ -7,7 +7,11 @@ import { selectIsCheckoutPanelCollapsed } from '../../slices/common-slice';
 import useTransition from 'react-transition-state';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../store';
-import { selectIsCollapsedCheckoutPanelOpen, toggleIsCollapsedCheckoutPanelOpen } from '../../slices/checkout-slice';
+import {
+    selectChosenGiftCard,
+    selectIsCollapsedCheckoutPanelOpen,
+    toggleIsCollapsedCheckoutPanelOpen,
+} from '../../slices/checkout-slice';
 import { Overlay } from '../common';
 
 import './checkout-panel.less';
@@ -15,6 +19,7 @@ import './checkout-panel.less';
 export const CheckoutPanel: React.FC = (): React.ReactElement => {
     const isCollapsedCheckoutPanelOpen = useAppSelector(selectIsCollapsedCheckoutPanelOpen);
     const isCheckoutPanelCollapsedView = useAppSelector(selectIsCheckoutPanelCollapsed);
+    const selectedGiftCard = useAppSelector(selectChosenGiftCard);
     const dispatch = useDispatch<AppDispatch>();
     const [transition, toggleTransition] = useTransition();
 
@@ -42,7 +47,7 @@ export const CheckoutPanel: React.FC = (): React.ReactElement => {
             )}
 
             <section className={classes}>
-                <CheckoutPanelView />
+                <CheckoutPanelView selectedGiftCard={selectedGiftCard} />
                 <CheckoutConfirmationPanelView />
             </section>
         </>
